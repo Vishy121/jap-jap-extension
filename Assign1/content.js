@@ -148,14 +148,25 @@ async function translateSelection(rawText) {
   const pairs = [];
 
   for (const original of sentences) {
-    const japanese = await translateToJapanese(original);
+    let japanese = "";
+    try {
+      japanese = await translateToJapanese(original);
+    } catch (_error) {
+      // Keep UI usable even when translation endpoint is temporarily unavailable.
+      japanese = original;
+    }
     let sampleJapanese = "";
     let sampleEnglish = "";
 
     if (getWordCount(original) === 1) {
-      const sample = await fetchRealWorldSample(japanese);
-      sampleJapanese = sample.japanese;
-      sampleEnglish = sample.english;
+      try {
+        const sample = await fetchRealWorldSample(japanese);
+        sampleJapanese = sample.japanese;
+        sampleEnglish = sample.english;
+      } catch (_error) {
+        sampleJapanese = "";
+        sampleEnglish = "";
+      }
     }
 
     pairs.push({ original, japanese, sampleJapanese, sampleEnglish });
@@ -174,20 +185,26 @@ function splitIntoSentences(text) {
 }
 
 async function translateToJapanese(text) {
-  const url =
+  const urls = [
     "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=ja&dt=t&q=" +
-    encodeURIComponent(text);
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Failed to reach translation service.");
+      encodeURIComponent(text),
+    "https://translate.google.com/translate_a/single?client=gtx&sl=auto&tl=ja&dt=t&q=" +
+      encodeURIComponent(text)
+  ];
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) continue;
+      const data = await response.json();
+      const result = (data?.[0] || []).map((chunk) => chunk[0]).join("").trim();
+      if (result) return result;
+    } catch (_error) {
+      // Try next endpoint.
+    }
   }
 
-  const data = await response.json();
-  const result = (data?.[0] || []).map((chunk) => chunk[0]).join("").trim();
-  if (!result) {
-    throw new Error("No translation returned.");
-  }
-  return result;
+  throw new Error("Translation service unavailable. Please try again.");
 }
 
 async function fetchRealWorldSample(japaneseWord) {

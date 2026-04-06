@@ -112,3 +112,19 @@ This project has two compute contexts: extension runtime and AI-assisted develop
 - `Assign1/content.js`
 - `Assign1/content.css`
 - `Assign1/background.js`
+
+## Video Demo (Slashdot Flow)
+
+Demo target action:
+
+1. Open Slashdot.
+2. Select a random word.
+3. Show Jap-Jap popup with translation.
+4. Click audio and verify playback is captured in recording.
+
+Demo source page: [Slashdot](https://slashdot.org/)
+
+Upload status: pending (will be uploaded as non-public).
+
+Video link (to be added):
+- `TBD`

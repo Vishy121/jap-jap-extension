@@ -6,6 +6,7 @@
   "permissions": [],
   "host_permissions": [
     "https://translate.googleapis.com/*",
+    "https://translate.google.com/*",
     "https://tatoeba.org/*"
   ],
   "content_scripts": [
