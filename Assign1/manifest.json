@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Jap-Jap",
+  "version": "1.0.0",
+  "description": "One-click Japanese translation for selected webpage text.",
+  "permissions": [],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://tatoeba.org/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
