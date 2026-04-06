@@ -126,5 +126,5 @@ Demo source page: [Slashdot](https://slashdot.org/)
 
 Upload status: pending (will be uploaded as non-public).
 
-Video link (to be added):
-- `TBD`
+Video link : https://youtu.be/li4wsdr8O2w
+
