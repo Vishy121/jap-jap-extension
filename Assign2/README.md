@@ -2,6 +2,9 @@
 
 This project is a high-performance Chrome Extension that provides a curated dashboard of the latest AI technical papers, powered by Google's Gemini generative models. It features a tiered learning system and a glassmorphism design.
 
+## 🎥 Project Demo
+**Watch the demo:** [https://youtu.be/GawPqlGLXP4](https://youtu.be/GawPqlGLXP4)
+
 ## 🚀 Project Evolution & Prompt Journey
 
 ### 1. The Foundation
