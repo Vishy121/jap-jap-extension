@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="logo">AI LEARN</div>
+            <div class="nav-item active" data-tier="Beginner">Level 1: Novice</div>
+            <div class="nav-item" data-tier="Intermediate">Level 2: Builder</div>
+            <div class="nav-item" data-tier="Advanced">Level 3: Expert</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="header">
+                <h2 id="tier-title">AI Research Repository</h2>
+                <p id="tier-subtitle">Curation of latest technical papers and abstracts</p>
+            </div>
+
+            <div id="loader" class="loader">
+                <div class="spinner"></div>
+                <p>Curating latest insights...</p>
+            </div>
+
+            <div id="content-area">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="gemini_service.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

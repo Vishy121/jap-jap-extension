@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyExplorers | Where Fun Meets Imagination</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #fffaf0;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #ff6b6b;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffd93d;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 107, 107, 0.8),
+                    rgba(255, 107, 107, 0.8)), url('https://images.unsplash.com/photo-1566454419290-28221f2951c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #ffd93d;
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,
+                        1fr));
+            gap: 2rem;
+            background-color: white;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-bottom: 5px solid #4ecdc4;
+        }
+
+        .feature-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 15px 15px 0 #ffd93d;
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background-color: #f7f7f7;
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-card {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-card.popular {
+            border: 3px solid #ff6b6b;
+            transform: scale(1.05);
+        }
+
+        .price-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        input,
+        textarea {
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #ff6b6b;
+        }
+
+        button[type="submit"] {
+            background-color: #4ecdc4;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 3rem 5% 1rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            /* Simplified for demo */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#" class="logo">🚀 TinyExplorers</a>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Play Zones</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Where Every Child is an Explorer!</h1>
+        <p>A safe, creative, and joyful space designed for kids to play, learn, and grow through imagination.</p>
+        <a href="#pricing" class="cta-button">Book a Play Date</a>
+    </header>
+
+    <section id="services" class="features">
+        <div class="feature-card">
+            <h3>🎨 Creative Arts</h3>
+            <p>Unleash your child's inner Picasso in our mess-friendly art studio designed for small hands.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🏰 Soft Play Castle</h3>
+            <p>Our multi-level soft playground is perfect for climbing, sliding, and burning off that extra energy.</p>
+        </div>
+        <div class="feature-card">
+            <h3>🧪 STEM Lab</h3>
+            <p>Safe and fun science experiments for kids to learn
+                how the world works through play.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1472162072942-cd5147eb3902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                alt="Kids playing">
+        </div>
+        <div class="about-content">
+            <h2>Our Story</h2>
+            <p>Founded by parents and educators, TinyExplorers was built on the belief that play is the highest form of
+                research. We provide a sanitized, supervised, and stimulating environment where safety is our top
+                priority.</p>
+            <br>
+            <p>Whether it's a rainy afternoon or a birthday celebration, we make sure every visit is an adventure to
+                remember.</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <h2>Simple Pricing</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h4>Day Pass</h4>
+                <div class="price">$15</div>
+                <p>2 Hours of Play</p>
+                <p>1 Free Drink</p>
+                <p>All Zones Access</p>
+            </div>
+            <div class="price-card popular">
+                <h4>Unlimited Month</h4>
+                <div class="price">$49</div>
+                <p>Unlimited Entry</p>
+                <p>10% Off Cafe</p>
+                <p>Priority Booking</p>
+            </div>
+            <div class="price-card">
+                <h4>Party Pack</h4>
+                <div class="price">$199</div>
+                <p>10 Children</p>
+                <p>Private Room</p>
+                <p>Pizza & Drinks</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Drop Us a Message</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <textarea rows="5" placeholder="How can we help you?"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Safety Rules</a>
+        </div>
+        <p>&copy; 2023 TinyExplorers Startup. Made with ❤️ for kid
+            s.</p>
+    </footer>
+
+</body>
+
+</html>
